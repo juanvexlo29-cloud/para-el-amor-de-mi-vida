@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida ❤️</title>
+
+    <!-- Etiquetas OpenGraph para vista previa romántica al compartir el enlace por WhatsApp -->
+    <meta property="og:title" content="Para el amor de mi vida ❤️">
+    <meta property="og:description" content="Mi niña hermosa, mi amor, mi primera novia, mi futura esposa... Hoy amanecí inspirado y más enamorado que nunca de ti. Toca para abrir esta carta especial.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.postimg.cc/3xGx7Nf9/image.png">
+    <meta name="theme-color" content="#6e1423">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Playfair Display, Cormorant Garamond y Great Vibes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para iconos delicados -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Paleta de colores burdeos/vino, dorado y crema cálida */
+        :root {
+            --cream-bg: #fdf8f5;
+            --paper-bg: #fffcf9;
+            --burgundy: #6e1423;
+            --burgundy-dark: #4a0b16;
+            --rose-soft: #d48c96;
+            --rose-tint: #f6e4e6;
+            --gold: #c59b49;
+            --gold-light: #e5cc8e;
+            --ink-color: #3a2327;
+        }
+
+        body {
+            background-color: var(--cream-bg);
+            background-image:
+                radial-gradient(circle at 12% 18%, rgba(212, 140, 150, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 88% 82%, rgba(197, 155, 73, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(110, 20, 35, 0.04) 0%, transparent 75%);
+            color: var(--ink-color);
+            font-family: 'Cormorant Garamond', serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .font-script {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-body {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Textura de papel fino para la carta */
+        .paper-sheet {
+            background-color: var(--paper-bg);
+            background-image:
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(250, 240, 235, 0.55)),
+                repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(197, 155, 73, 0.09) 30px);
+            box-shadow:
+                0 22px 55px rgba(74, 11, 22, 0.14),
+                0 4px 16px rgba(197, 155, 73, 0.16),
+                inset 0 0 45px rgba(246, 228, 230, 0.65);
+        }
+
+        /* Pétalos y corazones flotantes de fondo */
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.78;
+            }
+            85% {
+                opacity: 0.78;
+            }
+            100% {
+                transform: translateY(110vh) translateX(36px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .floating-petal {
+            position: fixed;
+            top: -40px;
+            pointer-events: none;
+            z-index: 5;
+            animation: petalFall linear infinite;
+        }
+
+        /* Estilos del Sobre Sellado */
+        .envelope-stage {
+            perspective: 1200px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: linear-gradient(145deg, #7c192a, #540d19);
+            border-radius: 14px;
+            box-shadow:
+                0 25px 45px rgba(74, 11, 22, 0.36),
+                0 0 0 1px rgba(197, 155, 73, 0.45);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+            .envelope {
+                width: 440px;
+                height: 290px;
+            }
+        }
+
+        .envelope:hover {
+            transform: translateY(-6px) scale(1.02);
+        }
+
+        /* Solapa superior triangular */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(180deg, #8d1e32 0%, #631120 100%);
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.4s;
+            z-index: 30;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.32));
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 5;
+        }
+
+        /* Solapas laterales e inferior */
+        .envelope-sides {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 14px;
+        }
+
+        .envelope-sides::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #691322 0%, #4d0a16 100%);
+            clip-path: polygon(0 0, 52% 52%, 0 100%);
+        }
+
+        .envelope-sides::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, #691322 0%, #4d0a16 100%);
+            clip-path: polygon(100% 0, 48% 52%, 100% 100%);
+        }
+
+        .envelope-bottom {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #5c0f1d 0%, #781728 100%);
+            clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+            z-index: 22;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            border-top: 1px solid rgba(197, 155, 73, 0.35);
+        }
+
+        /* Vista previa de tarjeta interior */
+        .envelope-card-peek {
+            position: absolute;
+            left: 7%;
+            right: 7%;
+            bottom: 10px;
+            height: 82%;
+            background: #fffcf9;
+            border-radius: 10px;
+            z-index: 15;
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 18px;
+            border: 1px solid rgba(197, 155, 73, 0.45);
+        }
+
+        .envelope.open .envelope-card-peek {
+            transform: translateY(-115px);
+        }
+
+        /* Sello de lacre dorado */
+        .wax-seal {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f5dc9f, #c59b49 55%, #8a6520 100%);
+            box-shadow:
+                0 6px 16px rgba(0, 0, 0, 0.48),
+                inset 0 2px 4px rgba(255, 255, 255, 0.65),
+                inset 0 -3px 6px rgba(82, 56, 12, 0.75);
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+            border: 3px solid rgba(255, 244, 214, 0.5);
+        }
+
+        .wax-seal::after {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            border-radius: 50%;
+            border: 1px dashed rgba(110, 20, 35, 0.45);
+        }
+
+        @keyframes sealPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.07); }
+        }
+
+        .wax-seal-pulse {
+            animation: sealPulse 2.3s infinite ease-in-out;
+        }
+
+        .envelope.open .wax-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.3);
+            pointer-events: none;
+        }
+
+        /* Tarjetas Polaroid con cinta Washi */
+        .polaroid-card {
+            background: #ffffff;
+            padding: 10px 10px 30px 10px;
+            border-radius: 8px;
+            box-shadow:
+                0 10px 24px rgba(58, 35, 39, 0.13),
+                0 2px 6px rgba(0, 0, 0, 0.06);
+            transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s ease;
+            position: relative;
+            border: 1px solid rgba(197, 155, 73, 0.25);
+        }
+
+        .polaroid-card:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.04) !important;
+            box-shadow: 0 18px 36px rgba(110, 20, 35, 0.22);
+            z-index: 20;
+        }
+
+        .washi-tape {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2.5deg);
+            width: 72px;
+            height: 20px;
+            background-color: rgba(212, 140, 150, 0.58);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            z-index: 10;
+            border-radius: 2px;
+        }
+
+        .washi-tape.gold {
+            background-color: rgba(197, 155, 73, 0.48);
+            transform: translateX(-50%) rotate(3deg);
+        }
+
+        /* Animación de entrada de la carta */
+        .fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Botón principal romántico */
+        .btn-romantic {
+            background: linear-gradient(135deg, #7c192a 0%, #540d19 100%);
+            color: #fffcf9;
+            border: 1px solid rgba(229, 204, 142, 0.55);
+            box-shadow: 0 10px 26px rgba(110, 20, 35, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-romantic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(110, 20, 35, 0.4);
+            background: linear-gradient(135deg, #8f1e32 0%, #66101f 100%);
+        }
+
+        .btn-romantic:active {
+            transform: translateY(1px);
+        }
+
+        /* Canvas de lluvia de corazones */
+        #heartsCanvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#f6e4e6] selection:text-[#6e1423]">
+
+    <!-- Pétalos flotantes de fondo -->
+    <div id="petalsLayer" aria-hidden="true"></div>
+
+    <!-- Canvas para lluvia de corazones -->
+    <canvas id="heartsCanvas"></canvas>
+
+    <!-- Notificación Toast -->
+    <div id="toastBox" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] bg-[#4a0b16] text-[#fffcf9] px-5 py-3 rounded-full shadow-2xl border border-[#c59b49]/50 flex items-center gap-2.5 text-sm font-display transition-all duration-300 opacity-0 translate-y-6 pointer-events-none">
+        <i class="fas fa-heart text-[#e5cc8e]"></i>
+        <span id="toastText">Mensaje copiado</span>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- PANTALLA 1: SOBRE SELLADO CON LACRE DORADO                            -->
+    <!-- ===================================================================== -->
+    <section id="envelopeScreen" class="min-h-screen flex flex-col items-center justify-center px-4 py-10 relative z-20 transition-opacity duration-700">
+        <div class="text-center mb-8 sm:mb-10">
+            <p class="uppercase tracking-[0.28em] text-xs sm:text-sm font-display text-[#8c5861] mb-2">
+                Una sorpresa especial para ti
+            </p>
+            <h1 class="font-script text-5xl sm:text-6xl text-[#6e1423] drop-shadow-sm">
+                Para el amor de mi vida
+            </h1>
+        </div>
+
+        <!-- Sobre Interactivo -->
+        <div class="envelope-stage my-3">
+            <div id="envelopeBox" class="envelope" role="button" tabindex="0" aria-label="Abrir carta para el amor de mi vida">
+                <div class="envelope-flap"></div>
+
+                <div class="envelope-card-peek">
+                    <p class="font-script text-2xl sm:text-3xl text-[#6e1423]">Mi niña hermosa...</p>
+                    <div class="w-16 h-[1px] bg-[#c59b49]/60 my-1"></div>
+                    <p class="font-body italic text-sm text-[#8c5861]">Con todo mi corazón</p>
+                </div>
+
+                <div class="envelope-sides"></div>
+                <div class="envelope-bottom"></div>
+
+                <!-- Sello de lacre dorado -->
+                <div class="wax-seal wax-seal-pulse" title="Toca para abrir">
+                    <i class="fas fa-heart text-[#6e1423] text-2xl drop-shadow"></i>
+                </div>
+            </div>
+        </div>
+
+        <button id="openEnvelopeBtn" class="mt-9 group focus:outline-none cursor-pointer">
+            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/85 backdrop-blur-sm border border-[#c59b49]/45 shadow-sm font-display text-xs sm:text-sm tracking-widest uppercase text-[#6e1423] group-hover:bg-[#6e1423] group-hover:text-white transition-all duration-300">
+                <i class="fas fa-envelope-open-text text-[#c59b49] group-hover:text-[#e5cc8e]"></i>
+                Toca el sello dorado para abrir
+            </span>
+        </button>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PANTALLA 2: CARTA DESPLEGADA + GALERÍA POLAROID + ACCIONES            -->
+    <!-- ===================================================================== -->
+    <main id="letterScreen" class="hidden min-h-screen py-8 sm:py-14 px-4 sm:px-6 relative z-20">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Controles superiores: volver al sobre y caja musical Web Audio API -->
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-6 px-1">
+                <button id="backToEnvelopeBtn" class="text-xs sm:text-sm font-display text-[#8c5861] hover:text-[#6e1423] flex items-center gap-2 transition-colors py-2.5 px-4 rounded-full bg-white/75 border border-[#c59b49]/30 cursor-pointer">
+                    <i class="fas fa-envelope"></i>
+                    <span>Cerrar sobre</span>
+                </button>
+
+                <button id="musicBtn" class="text-xs sm:text-sm font-display text-[#6e1423] hover:bg-[#6e1423] hover:text-white flex items-center gap-2 transition-all py-2.5 px-4 rounded-full bg-white/85 border border-[#c59b49]/45 shadow-sm cursor-pointer">
+                    <i id="musicIcon" class="fas fa-music text-[#c59b49]"></i>
+                    <span id="musicLabel">Caja musical</span>
+                </button>
+            </div>
+
+            <!-- HOJA PRINCIPAL DE LA CARTA -->
+            <article class="paper-sheet rounded-2xl sm:rounded-3xl p-6 sm:p-12 md:p-16 border border-[#c59b49]/45 relative overflow-hidden">
+                <!-- Esquinas ornamentales doradas -->
+                <div class="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#c59b49]/55 rounded-tl-lg pointer-events-none"></div>
+                <div class="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-[#c59b49]/55 rounded-tr-lg pointer-events-none"></div>
+                <div class="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-[#c59b49]/55 rounded-bl-lg pointer-events-none"></div>
+                <div class="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#c59b49]/55 rounded-br-lg pointer-events-none"></div>
+
+                <!-- Encabezado -->
+                <header class="text-center mb-8 sm:mb-10">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#f6e4e6] text-[#6e1423] mb-3 border border-[#c59b49]/35 shadow-inner">
+                        <i class="fas fa-heart text-lg"></i>
+                    </div>
+                    <p class="uppercase tracking-[0.25em] text-xs font-display text-[#9e6b73] mb-2">
+                        Con todo mi amor y sinceridad
+                    </p>
+                    <h1 class="font-script text-5xl sm:text-6xl md:text-7xl text-[#6e1423] leading-tight">
+                        Para el amor de mi vida
+                    </h1>
+                    <div class="flex items-center justify-center gap-3 mt-4">
+                        <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-r from-transparent to-[#c59b49]"></span>
+                        <i class="fas fa-spa text-[#c59b49] text-xs"></i>
+                        <span class="h-[1px] w-16 sm:w-24 bg-gradient-to-l from-transparent to-[#c59b49]"></span>
+                    </div>
+                </header>
+
+                <!-- Texto exacto solicitado -->
+                <div class="space-y-6 text-lg sm:text-xl md:text-[22px] leading-relaxed sm:leading-[1.85] text-[#3a2327]">
+                    <p class="font-display italic text-xl sm:text-2xl text-[#6e1423] font-semibold text-center sm:text-left">
+                        “Mi niña hermosa, mi amor, mi primera novia, mi futura esposa...”
+                    </p>
+
+                    <p class="first-letter:text-5xl first-letter:font-script first-letter:text-[#6e1423] first-letter:mr-1.5 first-letter:float-left">
+                        Para el amor de mi vida:
+                        Creo que te había comentado que hoy amanecí inspirado y más enamorado que nunca de mi novia. Quería reflejar con estas palabras lo importante que eres para mí. Llegaste a mi vida cuando menos lo esperaba, de una manera tan inesperada que jamás imaginé lo mucho que llegarías a significar para mí; pero dicen que las cosas más bonitas llegan cuando menos las buscamos, y ahora entiendo que, a veces, aquello que nunca esperamos termina convirtiéndose en lo mejor que nos pudo pasar.
+                    </p>
+
+                    <div class="my-7 p-5 sm:p-6 rounded-2xl bg-[#f6e4e6]/60 border-l-4 border-[#6e1423] relative">
+                        <i class="fas fa-quote-right absolute top-3 right-4 text-[#d48c96]/35 text-3xl"></i>
+                        <p class="font-display italic text-lg sm:text-xl md:text-2xl text-[#540d19] font-medium leading-relaxed">
+                            Te amo mujer, quiero que siempre tengas presente que eres una mujer espectacular y eres el amor de mi vida.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Firma -->
+                <footer class="mt-8 sm:mt-10 pt-6 border-t border-[#c59b49]/35 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="text-center sm:text-left">
+                        <p class="text-xs uppercase tracking-widest font-display text-[#8c5861]">Siempre tuyo,</p>
+                        <p class="font-script text-4xl text-[#6e1423] mt-0.5">Quien te ama con el alma ❤️</p>
+                    </div>
+                    <div class="flex items-center gap-2 text-[#c59b49] text-base font-display italic">
+                        <span>Hoy, mañana y siempre</span>
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                </footer>
+            </article>
+
+            <!-- ================================================================= -->
+            <!-- GALERÍA POLAROID INTERACTIVA CON LAS 8 URLS DIRECTAS              -->
+            <!-- ================================================================= -->
+            <section class="mt-14 sm:mt-16">
+                <div class="text-center mb-8 sm:mb-10">
+                    <span class="uppercase tracking-[0.25em] text-xs font-display text-[#8c5861]">Nuestros momentos</span>
+                    <h2 class="font-script text-4xl sm:text-5xl text-[#6e1423] mt-1">
+                        Pedacitos de nuestra historia
+                    </h2>
+                    <p class="text-sm sm:text-base text-[#7a4b53] mt-1 font-body italic">
+                        Toca cualquier foto para verla en grande ✨
+                    </p>
+                </div>
+
+                <div id="polaroidGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 px-1">
+                    <!-- Generado por JS con las 8 URLs exactas de Postimages -->
+                </div>
+            </section>
+
+            <!-- ================================================================= -->
+            <!-- BOTÓN INTERACTIVO FINAL Y BOTONES PARA COMPARTIR                  -->
+            <!-- ================================================================= -->
+            <section class="mt-14 sm:mt-16 bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-10 border border-[#c59b49]/45 shadow-xl text-center">
+                <h3 class="font-script text-4xl sm:text-5xl text-[#6e1423] mb-2">
+                    ¿Qué dices, mi amor?
+                </h3>
+                <p class="text-base sm:text-lg text-[#6d434a] mb-7 max-w-md mx-auto">
+                    Toca el botón para sellar nuestro amor o comparte este recuerdo especial.
+                </p>
+
+                <!-- Botón Acepto ser el amor de tu vida -->
+                <div class="flex flex-col items-center justify-center gap-4">
+                    <button id="acceptLoveBtn" class="btn-romantic w-full sm:w-auto px-8 py-4 rounded-full font-display text-lg sm:text-xl font-semibold tracking-wide flex items-center justify-center gap-3 cursor-pointer">
+                        <i class="fas fa-heart text-[#e5cc8e] animate-pulse"></i>
+                        <span>Acepto ser el amor de tu vida</span>
+                    </button>
+
+                    <div id="specialMessageBox" class="hidden mt-3 p-4 sm:p-5 rounded-2xl bg-[#f6e4e6] border border-[#d48c96] text-[#6e1423] max-w-lg mx-auto shadow-inner">
+                        <p class="font-script text-3xl sm:text-4xl mb-1">¡Me haces el hombre más feliz del mundo! 💍</p>
+                        <p class="font-body text-base sm:text-lg italic">
+                            Prometo cuidarte, respetarte y amarte cada día más, mi futura esposa. ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Divisor -->
+                <div class="flex items-center justify-center gap-3 my-8">
+                    <span class="h-[1px] flex-1 bg-[#c59b49]/35"></span>
+                    <span class="text-xs uppercase tracking-widest font-display text-[#8c5861]">Compartir carta</span>
+                    <span class="h-[1px] flex-1 bg-[#c59b49]/35"></span>
+                </div>
+
+                <!-- Botones para enviar enlace por WhatsApp y copiar mensaje -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-xl mx-auto">
+                    <button id="whatsappBtn" class="flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-[#25D366] hover:bg-[#1fb858] text-white font-display text-sm font-medium shadow-md transition-all cursor-pointer">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Enviar enlace por WhatsApp</span>
+                    </button>
+
+                    <button id="copyBtn" class="flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-[#fffcf9] hover:bg-[#f6e4e6] text-[#6e1423] border border-[#6e1423]/30 font-display text-sm font-medium shadow-sm transition-all cursor-pointer">
+                        <i class="far fa-copy text-base"></i>
+                        <span>Copiar mensaje de la carta</span>
+                    </button>
+                </div>
+            </section>
+
+            <footer class="text-center mt-10 pb-6 text-sm font-body italic text-[#9e6b73]">
+                Hecho con todo el amor del mundo para mi futura esposa ❤️
+            </footer>
+        </div>
+    </main>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL LIGHTBOX PARA AMPLIAR FOTOS AL HACER CLIC                       -->
+    <!-- ===================================================================== -->
+    <div id="lightboxModal" class="fixed inset-0 z-[110] bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300" role="dialog" aria-modal="true">
+        <div id="lightboxCard" class="relative max-w-lg w-full bg-white p-3 sm:p-4 pb-6 rounded-xl shadow-2xl transform transition-all scale-95">
+            <button id="closeLightboxBtn" class="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-[#6e1423] text-white border-2 border-[#e5cc8e] flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer" aria-label="Cerrar foto">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="overflow-hidden rounded-lg bg-[#fdf8f5] flex items-center justify-center max-h-[68vh]">
+                <img id="lightboxImg" src="" alt="Recuerdo especial" class="w-full h-auto max-h-[66vh] object-contain">
+            </div>
+
+            <div class="mt-4 text-center px-2">
+                <p id="lightboxCaption" class="font-script text-3xl text-[#6e1423]"></p>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-100">
+                    <button id="prevPhotoBtn" class="text-xs sm:text-sm font-display text-[#6e1423] hover:underline flex items-center gap-1.5 py-2 px-3 cursor-pointer">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </button>
+                    <span id="lightboxCounter" class="text-xs font-display text-gray-500">1 / 8</span>
+                    <button id="nextPhotoBtn" class="text-xs sm:text-sm font-display text-[#6e1423] hover:underline flex items-center gap-1.5 py-2 px-3 cursor-pointer">
+                        Siguiente <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: GALERÍA, WEB AUDIO API (CAJA MUSICAL) Y CORAZONES         -->
+    <!-- ===================================================================== -->
+    <script>
+        // 1. Texto exacto de la carta para copiar
+        const EXACT_LETTER_TEXT = `Para el amor de mi vida ❤️
+
+Mi niña hermosa, mi amor, mi primera novia, mi futura esposa...
+
+Para el amor de mi vida:
+Creo que te había comentado que hoy amanecí inspirado y más enamorado que nunca de mi novia. Quería reflejar con estas palabras lo importante que eres para mí. Llegaste a mi vida cuando menos lo esperaba, de una manera tan inesperada que jamás imaginé lo mucho que llegarías a significar para mí; pero dicen que las cosas más bonitas llegan cuando menos las buscamos, y ahora entiendo que, a veces, aquello que nunca esperamos termina convirtiéndose en lo mejor que nos pudo pasar.
+
+Te amo mujer, quiero que siempre tengas presente que eres una mujer espectacular y eres el amor de mi vida.`;
+
+        // 2. Las 8 URLs directas exactas de Postimages
+        const MEMORIES = [
+            {
+                url: 'https://i.postimg.cc/3xGx7Nf9/image.png',
+                caption: 'Tu mirada que me enamora',
+                rotate: '-2.5deg',
+                tape: 'rose'
+            },
+            {
+                url: 'https://i.postimg.cc/MZr6QVCk/image.png',
+                caption: 'Cerca de ti es mi lugar favorito',
+                rotate: '2deg',
+                tape: 'gold'
+            },
+            {
+                url: 'https://i.postimg.cc/XNhWJ35X/image.png',
+                caption: 'Momentos juntos que atesoro',
+                rotate: '-1.8deg',
+                tape: 'rose'
+            },
+            {
+                url: 'https://i.postimg.cc/6QjWfZ8M/image.png',
+                caption: 'Contigo todo es más bonito',
+                rotate: '2.4deg',
+                tape: 'gold'
+            },
+            {
+                url: 'https://i.postimg.cc/nVQFqCp7/image.png',
+                caption: 'Tan hermosa como siempre',
+                rotate: '-2deg',
+                tape: 'gold'
+            },
+            {
+                url: 'https://i.postimg.cc/kgwq7Svq/image.png',
+                caption: 'Mi compañera de vida',
+                rotate: '1.8deg',
+                tape: 'rose'
+            },
+            {
+                url: 'https://i.postimg.cc/QCLrfJhC/image.png',
+                caption: 'Tu ternura ilumina mis días',
+                rotate: '-2.2deg',
+                tape: 'gold'
+            },
+            {
+                url: 'https://i.postimg.cc/28DDvG0G/image.png',
+                caption: 'Tu corazón tan noble y lindo',
+                rotate: '2.2deg',
+                tape: 'rose'
+            }
+        ];
+
+        // Referencias DOM
+        const envelopeScreen = document.getElementById('envelopeScreen');
+        const letterScreen = document.getElementById('letterScreen');
+        const envelopeBox = document.getElementById('envelopeBox');
+        const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
+        const backToEnvelopeBtn = document.getElementById('backToEnvelopeBtn');
+        const polaroidGrid = document.getElementById('polaroidGrid');
+
+        // Lightbox
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxCard = document.getElementById('lightboxCard');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+        const prevPhotoBtn = document.getElementById('prevPhotoBtn');
+        const nextPhotoBtn = document.getElementById('nextPhotoBtn');
+        let activePhotoIndex = 0;
+
+        // Botones de acción
+        const acceptLoveBtn = document.getElementById('acceptLoveBtn');
+        const specialMessageBox = document.getElementById('specialMessageBox');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const copyBtn = document.getElementById('copyBtn');
+
+        // 3. Renderizar Galería Polaroid
+        function renderPolaroidGallery() {
+            polaroidGrid.innerHTML = '';
+            MEMORIES.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'polaroid-card cursor-pointer select-none';
+                card.style.transform = `rotate(${item.rotate})`;
+                card.setAttribute('role', 'button');
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('aria-label', `Ver foto: ${item.caption}`);
+
+                const tapeStyle = item.tape === 'gold' ? 'washi-tape gold' : 'washi-tape';
+
+                card.innerHTML = `
+                    <div class="${tapeStyle}"></div>
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded bg-[#f6e4e6]/40">
+                        <img
+                            src="${item.url}"
+                            alt="${item.caption}"
+                            loading="lazy"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x500/f6e4e6/6e1423?text=Nuestro+Recuerdo+%E2%9D%A4';"
+                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                        >
+                    </div>
+                    <p class="font-script text-xl sm:text-2xl text-[#6e1423] text-center mt-2.5 leading-tight px-1">
+                        ${item.caption}
+                    </p>
+                `;
+
+                card.addEventListener('click', () => openLightbox(index));
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openLightbox(index);
+                    }
+                });
+
+                polaroidGrid.appendChild(card);
+            });
+        }
+
+        // 4. Control del Modal Lightbox
+        function openLightbox(index) {
+            activePhotoIndex = index;
+            updateLightbox();
+            lightboxModal.classList.remove('hidden');
+            lightboxModal.classList.add('flex');
+            setTimeout(() => {
+                lightboxCard.classList.remove('scale-95');
+                lightboxCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeLightbox() {
+            lightboxCard.classList.remove('scale-100');
+            lightboxCard.classList.add('scale-95');
+            setTimeout(() => {
+                lightboxModal.classList.add('hidden');
+                lightboxModal.classList.remove('flex');
+            }, 200);
+        }
+
+        function updateLightbox() {
+            const current = MEMORIES[activePhotoIndex];
+            lightboxImg.src = current.url;
+            lightboxImg.onerror = function() {
+                this.onerror = null;
+                this.src = 'https://placehold.co/600x750/f6e4e6/6e1423?text=Para+el+amor+de+mi+vida+%E2%9D%A4';
+            };
+            lightboxCaption.textContent = current.caption;
+            lightboxCounter.textContent = `${activePhotoIndex + 1} / ${MEMORIES.length}`;
+        }
+
+        closeLightboxBtn.addEventListener('click', closeLightbox);
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
+
+        prevPhotoBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            activePhotoIndex = (activePhotoIndex - 1 + MEMORIES.length) % MEMORIES.length;
+            updateLightbox();
+        });
+
+        nextPhotoBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            activePhotoIndex = (activePhotoIndex + 1) % MEMORIES.length;
+            updateLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevPhotoBtn.click();
+                if (e.key === 'ArrowRight') nextPhotoBtn.click();
+            }
+        });
+
+        // 5. Caja Musical Romántica generada con Web Audio API pura (sin archivos externos)
+        let audioCtx = null;
+        let musicTimer = null;
+        let isMusicPlaying = false;
+        let noteStep = 0;
+
+        const musicBtn = document.getElementById('musicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicLabel = document.getElementById('musicLabel');
+
+        // Frecuencias en Hz de una melodía dulce estilo caja musical (Fa Mayor / Re menor)
+        const MUSIC_BOX_NOTES = [
+            440.00, 349.23, 523.25, 440.00, // A4, F4, C5, A4
+            466.16, 392.00, 587.33, 466.16, // Bb4, G4, D5, Bb4
+            523.25, 440.00, 698.46, 659.25, // C5, A4, F5, E5
+            587.33, 523.25, 466.16, 440.00  // D5, C5, Bb4, A4
+        ];
+
+        function playMusicBoxNote(freq) {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+
+            // Oscilador principal cristalino + armónico suave de caja musical
+            const osc = audioCtx.createOscillator();
+            const overtone = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            const overtoneGain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            overtone.type = 'triangle';
+            overtone.frequency.setValueAtTime(freq * 2, now);
+
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.08, now + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+
+            overtoneGain.gain.setValueAtTime(0.0001, now);
+            overtoneGain.gain.exponentialRampToValueAtTime(0.018, now + 0.02);
+            overtoneGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+
+            osc.connect(gain);
+            overtone.connect(overtoneGain);
+            overtoneGain.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            overtone.start(now);
+            osc.stop(now + 1.45);
+            overtone.stop(now + 0.55);
+        }
+
+        function startMusicBox() {
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (!audioCtx) {
+                    audioCtx = new AudioContextClass();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                if (isMusicPlaying) return;
+
+                isMusicPlaying = true;
+                musicIcon.className = 'fas fa-pause text-[#c59b49]';
+                musicLabel.textContent = 'Pausar música';
+
+                playMusicBoxNote(MUSIC_BOX_NOTES[noteStep % MUSIC_BOX_NOTES.length]);
+                noteStep++;
+
+                musicTimer = setInterval(() => {
+                    playMusicBoxNote(MUSIC_BOX_NOTES[noteStep % MUSIC_BOX_NOTES.length]);
+                    noteStep++;
+                }, 680);
+            } catch (err) {
+                // Ignorar si el navegador restringe audio automático
+            }
+        }
+
+        function stopMusicBox() {
+            isMusicPlaying = false;
+            if (musicTimer) {
+                clearInterval(musicTimer);
+                musicTimer = null;
+            }
+            musicIcon.className = 'fas fa-music text-[#c59b49]';
+            musicLabel.textContent = 'Caja musical';
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                stopMusicBox();
+            } else {
+                startMusicBox();
+            }
+        });
+
+        // 6. Apertura y Cierre del Sobre
+        function openEnvelope() {
+            if (envelopeBox.classList.contains('open')) return;
+            envelopeBox.classList.add('open');
+            startMusicBox();
+
+            setTimeout(() => {
+                envelopeScreen.style.opacity = '0';
+                setTimeout(() => {
+                    envelopeScreen.classList.add('hidden');
+                    letterScreen.classList.remove('hidden');
+                    letterScreen.classList.add('fade-in-up');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    launchHeartsRain(45);
+                }, 550);
+            }, 1050);
+        }
+
+        function closeEnvelope() {
+            letterScreen.classList.add('hidden');
+            envelopeBox.classList.remove('open');
+            envelopeScreen.classList.remove('hidden');
+            setTimeout(() => {
+                envelopeScreen.style.opacity = '1';
+            }, 30);
+        }
+
+        envelopeBox.addEventListener('click', openEnvelope);
+        envelopeBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openEnvelope();
+            }
+        });
+        openEnvelopeBtn.addEventListener('click', openEnvelope);
+        backToEnvelopeBtn.addEventListener('click', closeEnvelope);
+
+        // 7. Pétalos flotantes continuos
+        function initFloatingPetals() {
+            const layer = document.getElementById('petalsLayer');
+            const icons = ['🌸', '❤', '✨', '♥'];
+            const colors = ['#d48c96', '#6e1423', '#c59b49', '#e5a4ae'];
+
+            for (let i = 0; i < 18; i++) {
+                const petal = document.createElement('span');
+                petal.className = 'floating-petal';
+                petal.textContent = icons[i % icons.length];
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.fontSize = `${13 + Math.random() * 14}px`;
+                petal.style.color = colors[i % colors.length];
+                petal.style.animationDuration = `${10 + Math.random() * 12}s`;
+                petal.style.animationDelay = `${Math.random() * 8}s`;
+                layer.appendChild(petal);
+            }
+        }
+
+        // 8. Lluvia de corazones en Canvas
+        const heartsCanvas = document.getElementById('heartsCanvas');
+        const ctx = heartsCanvas.getContext('2d');
+        let heartParticles = [];
+        let animId = null;
+
+        function resizeHeartsCanvas() {
+            heartsCanvas.width = window.innerWidth;
+            heartsCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeHeartsCanvas);
+        resizeHeartsCanvas();
+
+        function launchHeartsRain(count = 120) {
+            const colors = ['#6e1423', '#d48c96', '#c59b49', '#e5cc8e', '#ff4d6d'];
+            for (let i = 0; i < count; i++) {
+                heartParticles.push({
+                    x: Math.random() * heartsCanvas.width,
+                    y: heartsCanvas.height + 20 + Math.random() * 120,
+                    vx: (Math.random() - 0.5) * 4.5,
+                    vy: -(4.5 + Math.random() * 6.5),
+                    size: 11 + Math.random() * 15,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * Math.PI * 2,
+                    vRot: (Math.random() - 0.5) * 0.08,
+                    alpha: 1
+                });
+            }
+            if (!animId) {
+                animateHearts();
+            }
+        }
+
+        function drawHeartShape(x, y, size, color, rotation, alpha) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(rotation);
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            const topCurveHeight = size * 0.3;
+            ctx.moveTo(0, topCurveHeight);
+            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
+            ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateHearts() {
+            ctx.clearRect(0, 0, heartsCanvas.width, heartsCanvas.height);
+
+            heartParticles.forEach((p) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.055;
+                p.rotation += p.vRot;
+                if (p.vy > 0) {
+                    p.alpha -= 0.008;
+                }
+                drawHeartShape(p.x, p.y, p.size, p.color, p.rotation, Math.max(0, p.alpha));
+            });
+
+            heartParticles = heartParticles.filter((p) => p.alpha > 0 && p.y < heartsCanvas.height + 160);
+
+            if (heartParticles.length > 0) {
+                animId = requestAnimationFrame(animateHearts);
+            } else {
+                animId = null;
+                ctx.clearRect(0, 0, heartsCanvas.width, heartsCanvas.height);
+            }
+        }
+
+        // 9. Notificación Toast
+        function showToast(text) {
+            const box = document.getElementById('toastBox');
+            const label = document.getElementById('toastText');
+            label.textContent = text;
+            box.classList.remove('opacity-0', 'translate-y-6');
+            box.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                box.classList.add('opacity-0', 'translate-y-6');
+                box.classList.remove('opacity-100', 'translate-y-0');
+            }, 3200);
+        }
+
+        // 10. Eventos de botones finales
+        acceptLoveBtn.addEventListener('click', () => {
+            launchHeartsRain(150);
+            specialMessageBox.classList.remove('hidden');
+            acceptLoveBtn.innerHTML = '<i class="fas fa-check-circle text-[#e5cc8e]"></i><span>¡Siempre juntos, mi vida!</span>';
+            showToast('¡Te amo con todo mi corazón! ❤️');
+        });
+
+        whatsappBtn.addEventListener('click', () => {
+            const pageUrl = window.location.href;
+            const shareText = `Mi amor, te hice esta carta virtual con todo mi corazón ❤️ Ábrela aquí:\n${pageUrl}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+        });
+
+        copyBtn.addEventListener('click', () => {
+            const temp = document.createElement('textarea');
+            temp.value = EXACT_LETTER_TEXT;
+            temp.style.position = 'fixed';
+            temp.style.left = '-9999px';
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+                document.execCommand('copy');
+                showToast('Mensaje de la carta copiado ❤️');
+            } catch (e) {
+                showToast('No se pudo copiar automáticamente.');
+            }
+            document.body.removeChild(temp);
+        });
+
+        // Inicializar al cargar
+        window.onload = function () {
+            renderPolaroidGallery();
+            initFloatingPetals();
+        };
+    </script>
+</body>
+</html>
